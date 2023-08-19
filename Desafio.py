@@ -1,18 +1,27 @@
-#import pandas as pd
+import pandas as pd
 
-#df = pd.read_csv('planilha_dados.csv')
-#print(df)
 
 # Função principal, é o menu do banco
 def main():
-    usuarios = {}
-    #contas = []
+
+    # Ler o arquivo CSV para um DataFrame
+    df = pd.read_csv("planilha_dados.csv", index_col="cpf")
+    df.index = df.index.astype(str)
+    # Converter o DataFrame de volta para um dicionário
+    usuarios = df.to_dict(orient="index")
+
     while True:
+        print(usuarios)
         menu_menu()
         #Entrada de opções, decidirá qual raiz o user seguirá
         opcao = input().lower()
         if opcao == "s":
             print("Saindo...")
+            # Converter o dicionário para um DataFrame do Pandas
+            df = pd.DataFrame.from_dict(usuarios, orient="index")
+
+            # Escrever o DataFrame em um arquivo CSV
+            df.to_csv("planilha_dados.csv", index_label="cpf")
             break
 
         elif opcao == "nu":
@@ -25,15 +34,6 @@ def main():
             print("Operação inválida. Por favor selecione novamente uma operação.")
 
 
-def menu_entrar():
-    print(f"""
-    ==============================
-            Digite seu CPF
-    ==============================
-    """)
-    ...
-
-
 def menu_menu():
     print(f"""==============================
     [nu] Criar usuário
@@ -43,8 +43,8 @@ def menu_menu():
 
 def agencias():
     print(f"""[1] Agência 3885 - Av. Rui Barbosa
-    [2] Agência 0041 - R. Moraes Barros
-    [3] Agência 3246 - R. Moraes Barros""")
+[2] Agência 0041 - R. Moraes Barros
+[3] Agência 3246 - R. Moraes Barros""")
 
 
 def menu_logado():
@@ -66,20 +66,20 @@ def logado(cpf, usuarios):
         opcao_logado = input()
         if opcao_logado == "1":
             quantidade = float(input("Digite o valor que deseja sacar: "))
-            if quantidade > usuarios["cpf"]["valor"]:
+            if quantidade > float(usuarios[cpf]["valor"]) :
                 print("Operação inválida, saldo indisponível")
             
             else:
-                usuarios["cpf"]["valor"] -= quantidade
-                usuarios["cpf"]["extrato"] += f'Saque R$ {quantidade:.2f}\n'
+                usuarios[cpf]["valor"] = usuarios[cpf]["valor"] - quantidade 
+                usuarios[cpf]["extrato"] += f'Saque R$ {quantidade:.2f}\n'
 
         elif opcao_logado == "2":
             quantidade = float(input("Digite o valor que deseja depositar: "))
-            usuarios["cpf"]["valor"] += quantidade
-            usuarios["cpf"]["extrato"] += f'Saque R$ {quantidade:.2f}\n'
+            usuarios[cpf]["valor"] = quantidade + usuarios[cpf]["valor"]
+            usuarios[cpf]["extrato"] += f'Saque R$ {quantidade:.2f}\n'
 
         elif opcao_logado == "3":
-            print(usuarios["cpf"]["extrato"])
+            print(usuarios[cpf]["extrato"])
         elif opcao_logado == "4":
             print("Saindo...")
             return 1
@@ -92,8 +92,13 @@ def logado(cpf, usuarios):
 def entrar(usuarios):
     entrar = 1
     while entrar == 1:
-        menu_entrar()
-        cpf = input("Informe o CPF do usuário: ")
+        cpf = input(f"""=======================================
+    Informe o CPF do usuário
+Caso queira sair desse menu digite 0 
+=======================================
+""")
+        if cpf == '0':
+            break
         if filtrar_usuario(cpf, usuarios):
             entrar = logado(cpf, usuarios)
         else:
@@ -125,7 +130,6 @@ Caso queira sair desse menu digite 0
         nome = input("Informe o nome completo: ")
         data_nascimento = input("Informe a data de nascimento (dd-mm-aaaa): ")
         endereco = input("Informe o endereço (logradouro, nro - bairro - cidade/sigla estado): ")
-        #op = True
         # Escolha de agência
         while True:
             agencias()
@@ -145,7 +149,7 @@ Caso queira sair desse menu digite 0
         usuarios.setdefault(cpf, {})
         # Colocando os dados que foram iseridos no dicionário com a chave CPF
         usuarios.update({cpf:
-                        {"nome": nome, "data_nascimento": data_nascimento, "cpf": cpf, "endereco": endereco, "agencia": agencia,
+                        {"nome": nome, "data_nascimento": data_nascimento, "endereco": endereco, "agencia": agencia,
                         "valor": 0, "extrato": ""}
                         })
         print("=== Usuário criado com sucesso! ===")
@@ -155,16 +159,5 @@ Caso queira sair desse menu digite 0
 def filtrar_usuario(cpf, usuarios):
     usuarios_filtrados = cpf in usuarios
     return usuarios_filtrados
-
-
-#def criar_conta(numero_conta, usuarios):
-    cpf = input("Informe o CPF do usuário: ")
-    usuario = filtrar_usuario(cpf, usuarios)
-
-    if usuario:
-        print("\n=== Conta criada com sucesso! ===")
-        return {"agencia": agencia, "numero_conta": numero_conta, "usuario": usuario}
-
-    print("\nUsuário não encontrado, fluxo de criação de conta encerrado!")
 
 main()
