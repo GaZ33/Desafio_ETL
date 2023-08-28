@@ -1,16 +1,16 @@
 cpf,nome,data_nascimento,endereco,agencia,valor,extrato
-12345678901,João da Silva,15/03/1985,Rua A,3885,1500.00, Extrato: 
-98765432102,Maria Oliveira,22/07/1990,Avenida B,0041,2500.00, Extrato: 
-45678912303,Carlos Santos,10/11/1982,Rua C,3246,800.00, Extrato: 
-78901234504,Ana Rodrigues,05/09/1978,Avenida D,3885,120.50, Extrato: 
-34567890105,Luiz Pereira,19/02/2000,Rua E,3246,3000.00, Extrato: 
-23456789006,Fernanda Alves,30/06/1995,Avenida F,3885,700.00, Extrato: 
-87654321007,Julia Ferreira,14/08/1989,Rua G,0041,450.00, Extrato: 
-76543210908,Gustavo Souza,02/04/1975,Avenida H,3885,200.00, Extrato: 
-54321098709,Lucas Silva,27/01/1988,Rua I,0041,1500.00, Extrato: 
-90123456710,Isabela Lima,09/12/1992,Avenida J,3246,1800.00, Extrato: 
+12345678901,João da Silva,15/03/1985,Rua A,3885,1500.0, Extrato: 
+98765432102,Maria Oliveira,22/07/1990,Avenida B,41,2500.0, Extrato: 
+45678912303,Carlos Santos,10/11/1982,Rua C,3246,800.0, Extrato: 
+78901234504,Ana Rodrigues,05/09/1978,Avenida D,3885,120.5, Extrato: 
+34567890105,Luiz Pereira,19/02/2000,Rua E,3246,3000.0, Extrato: 
+23456789006,Fernanda Alves,30/06/1995,Avenida F,3885,700.0, Extrato: 
+87654321007,Julia Ferreira,14/08/1989,Rua G,41,450.0, Extrato: 
+76543210908,Gustavo Souza,02/04/1975,Avenida H,3885,200.0, Extrato: 
+54321098709,Lucas Silva,27/01/1988,Rua I,41,1500.0, Extrato: 
+90123456710,Isabela Lima,09/12/1992,Avenida J,3246,1800.0, Extrato: 
 67890123411,Paulo Oliveira,18/05/1980,Rua K,3885,250.75, Extrato: 
-34567891213,Beatriz Santos,03/10/1998,Avenida L,0041,600.00, Extrato: 
-12345678914,Marcos Almeida,11/07/1972,Rua M,3246,1200.00, Extrato: 
-98765432115,Sofia Costa,26/09/1987,Avenida N,3885,50.00, Extrato: 
-45678912316,Eduardo Pereira,08/01/1996,Rua O,0041,350.00, Extrato: 
+34567891213,Beatriz Santos,03/10/1998,Avenida L,41,600.0, Extrato: 
+12345678914,Marcos Almeida,11/07/1972,Rua M,3246,1200.0, Extrato: 
+98765432115,Sofia Costa,26/09/1987,Avenida N,3885,50.0, Extrato: 
+45678912316,Eduardo Pereira,08/01/1996,Rua O,41,350.0, Extrato: 

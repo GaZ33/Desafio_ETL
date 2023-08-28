@@ -1,5 +1,5 @@
 import pandas as pd
-
+from colorama import init, Fore, Back, Style
 
 # Função principal, é o menu do banco
 def main():
@@ -11,12 +11,11 @@ def main():
     usuarios = df.to_dict(orient="index")
 
     while True:
-        print(usuarios)
         menu_menu()
         #Entrada de opções, decidirá qual raiz o user seguirá
         opcao = input().lower()
         if opcao == "s":
-            print("Saindo...")
+            print(Fore.RED + "Saindo...")
             # Converter o dicionário para um DataFrame do Pandas
             df = pd.DataFrame.from_dict(usuarios, orient="index")
 
@@ -35,11 +34,11 @@ def main():
 
 
 def menu_menu():
-    print(f"""==============================
-    [nu] Criar usuário
-    [en] Entrar
-    [s] Sair
-==============================""")
+    print(f"""{Fore.GREEN}=============================={Fore.WHITE}
+    {Fore.BLUE}[nu] Criar usuário
+    {Fore.GREEN}[en] Entrar
+    {Fore.RED}[s] Sair{Fore.GREEN}
+=============================={Fore.BLACK}""")
 
 def agencias():
     print(f"""[1] Agência 3885 - Av. Rui Barbosa
