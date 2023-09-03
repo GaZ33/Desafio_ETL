@@ -75,7 +75,7 @@ def logado(cpf, usuarios):
         elif opcao_logado == "2":
             quantidade = float(input("Digite o valor que deseja depositar: "))
             usuarios[cpf]["valor"] = quantidade + usuarios[cpf]["valor"]
-            usuarios[cpf]["extrato"] += f'Saque R$ {quantidade:.2f}\n'
+            usuarios[cpf]["extrato"] += f'Deposito R$ {quantidade:.2f}\n'
 
         elif opcao_logado == "3":
             print(usuarios[cpf]["extrato"])
