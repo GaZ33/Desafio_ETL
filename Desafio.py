@@ -13,7 +13,7 @@ def main():
     while True:
         menu_menu()
         #Entrada de opções, decidirá qual raiz o user seguirá
-        opcao = input().lower()
+        opcao = input(f"{Fore.RED}").lower()
         if opcao == "s":
             print(Fore.RED + "Saindo...")
             # Converter o dicionário para um DataFrame do Pandas
@@ -30,11 +30,12 @@ def main():
             entrar(usuarios)
 
         else:
-            print("Operação inválida. Por favor selecione novamente uma operação.")
+            print(f"""{Fore.RED}Operação inválida. 
+{Fore.WHITE}Por favor selecione novamente uma operação.""")
 
 
 def menu_menu():
-    print(f"""{Fore.GREEN}=============================={Fore.WHITE}
+    print(f"""{Fore.GREEN}==============================
     {Fore.BLUE}[nu] Criar usuário
     {Fore.GREEN}[en] Entrar
     {Fore.RED}[s] Sair{Fore.GREEN}
@@ -48,7 +49,7 @@ def agencias():
 
 def menu_logado():
     print(f"""
-    =======================================
+    {Fore.GREEN}=======================================
     [1] Sacar
     [2] Depositar
     [3] Extrato
